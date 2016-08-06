@@ -1,0 +1,57 @@
+﻿@model WSP_2.Models.FoundWebSiteAddress
+
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <h2 style="text-align:center;">Index</h2>
+</div>
+
+
+@using (Ajax.BeginForm("SearchDeepSiteMape", new AjaxOptions
+{
+    UpdateTargetId = "results",
+    LoadingElementId = "loading",
+    LoadingElementDuration = 500,
+    OnBegin = "OnBegin",
+    OnFailure = "OnFailure",
+    OnSuccess = "OnSuccess",
+    OnComplete = "OnComplete"
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Specify the desired URL</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UrlAddress)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UrlAddress)
+            @Html.ValidationMessageFor(model => model.UrlAddress)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.GuidString)
+        </div>
+
+        <p>
+            <input type="submit" value="Research site" />
+        </p>
+    </fieldset>
+}
+
+<div id="loading" style="display:none; color:Red; font-weight:bold;">
+    <p>Request is processed...</p>
+</div>
+
+<div id="results"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

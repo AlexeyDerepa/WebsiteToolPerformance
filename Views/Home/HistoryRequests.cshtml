@@ -1,0 +1,28 @@
+﻿@using WSP_2.Models
+@model IEnumerable<FoundWebSiteAddress>
+<div>
+    <h2 style="text-align:center;">History requests</h2>
+</div>
+
+<h3>In history @Model.Count() requests</h3>
+
+@{int count = 0;}
+
+<table>
+    <tr class="header">
+        <td><p>@Html.Label("№")</p></td>
+        <td><p>@Html.Label("XML")</p></td>
+        <td><p>@Html.Label("URL ADDRESS")</p></td>
+    </tr>
+    @foreach (FoundWebSiteAddress address in Model)
+    {
+
+        count++;
+
+        <tr>
+            <td><p>@count</p></td>
+            <td><b>@Html.ActionLink("Xmls", "HistoryXml", new { id = address.Id }, null) </b></td>
+            <td>@Html.ActionLink(address.UrlAddress, "SearchSitePage", "Home", new { id = address.Id }, null)</td>
+        </tr>
+    }
+</table>

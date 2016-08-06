@@ -1,0 +1,31 @@
+﻿@using WSP_2.Models
+@model IEnumerable<FoundSitePage>
+
+@{int count = 0;}
+<div>
+    <h2 style="text-align:center;">History requests  pages for @Model.First().FoundSiteMape.FoundWebSiteAddress.UrlAddress</h2>
+</div>
+
+<h3>In history @Model.Count() pages</h3>
+
+<table>
+    <tr class="header">
+        <td><b>@Html.Label("№")</b></td>
+        <td><b>@Html.Label("Min time")</b></td>
+        <td><b>@Html.Label("Max time")</b></td>
+        <td><b>@Html.Label("Average time")</b></td>
+        <td><b>@Html.Label("URL")</b></td>
+    </tr>
+    @foreach (FoundSitePage b in Model)
+    {
+        count++;
+
+        <tr>
+            <td>@count</td>
+            <td><b>@b.TimeMin</b></td>
+            <td>@b.TimeMax</td>
+            <td><b>@b.TimeAverage</b></td>
+            <td><a href="@b.NameSitePage">@b.NameSitePage</a></td>
+        </tr>
+    }
+</table>

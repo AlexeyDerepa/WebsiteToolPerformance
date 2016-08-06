@@ -1,0 +1,32 @@
+﻿@using WSP_2.Models
+@model IEnumerable<FoundSiteMape>
+
+@{int count = 0;}
+<div>
+    <h2 style="text-align:center;">History requests  XMLs for @Model.First().FoundWebSiteAddress.UrlAddress</h2>
+</div>
+
+<h3>In history @Model.Count() xml files </h3>
+
+<table>
+    <tr class="header">
+        <td><b>@Html.Label("№")</b></td>
+        <td><b>@Html.Label("Min time")</b></td>
+        <td><b>@Html.Label("Max time")</b></td>
+        <td><b>@Html.Label("Average time")</b></td>
+        <td><b>@Html.Label("URL")</b></td>
+    </tr>
+    @foreach (FoundSiteMape b in Model)
+    {
+
+        count++;
+
+        <tr>
+            <td>@count</td>
+            <td><b>@b.TimeMin</b></td>
+            <td>@b.TimeMax</td>
+            <td><b>@b.TimeAverage</b></td>
+            <td>@Html.ActionLink(@b.NameSateMape, "SpecificPartPages", "Home", new { id = @b.Id }, null)</td>
+        </tr>
+    }
+</table>
