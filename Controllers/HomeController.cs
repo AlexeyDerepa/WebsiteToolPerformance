@@ -19,8 +19,7 @@ namespace WSP_2.Controllers
 
         public ActionResult SearchDeepSiteMape(WSP_2.Models.FoundWebSiteAddress hostName)
         {
-            proc.ProcessingDeep(hostName);
-            return PartialView(new List<string>());
+            return PartialView(proc.ProcessingDeep(hostName));
         }
 
         public ActionResult PingSite()

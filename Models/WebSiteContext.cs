@@ -13,9 +13,9 @@ namespace WSP_2.Models
         public DbSet<FoundSitePage> FoundSitePages { get; set; }
 
         public WebSiteContext() : base("WebSiteDb2") { }
-        static WebSiteContext()
-        {
-            Database.SetInitializer<WebSiteContext>(new ContextInitializer());
-        }
+        //static WebSiteContext()
+        //{
+        //    Database.SetInitializer<WebSiteContext>(new ContextInitializer());
+        //}
     }
 }

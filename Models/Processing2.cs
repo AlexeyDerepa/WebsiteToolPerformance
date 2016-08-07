@@ -36,7 +36,7 @@ namespace WSP_2.Models
             listForFlotcharts = new List<long[]>();
             sw = new System.Diagnostics.Stopwatch();
         }
-        public int? ProcessingDeep(FoundWebSiteAddress hostName)
+        public List<string> ProcessingDeep(FoundWebSiteAddress hostName)
         {
             hostName.UrlAddress = MathcAddress(hostName.UrlAddress, httpwebAddress, 0);
 
@@ -53,8 +53,12 @@ namespace WSP_2.Models
             SearchSitePage(
                 SearchSiteMap(hostName.UrlAddress)
                 );
+            var xml = db.FoundSiteMapes.Where(x => x.FoundWebSiteAddressId == wsa.Id).Select(x => x.NameSateMape).ToList();
 
-            return wsa.Id;
+            List<string> list = new List<string> { "you can go to the history of requests", "URL address: ", wsa.UrlAddress, "Found *.xml: " + xml.Count().ToString() };
+            list.AddRange(xml);
+            list.Add(counter+" pages were found");
+            return list;
         }
         private void SearchSitePage(List<string> listSiteMap)
         {
@@ -64,6 +68,9 @@ namespace WSP_2.Models
                 lts = SpeedMeasurement(xmlPage);
 
                 info.listSiteMap = SearchPattern(info.str, httpwebPage, 1);
+
+                if (info.listSiteMap.Count == 0)
+                    continue;
 
                 fsm = new FoundSiteMape { FoundWebSiteAddress = wsa, NameSateMape = xmlPage, TimeMax = lts.Last(), TimeMin = lts.First(), TimeAverage = new TimeSpan((long)lts.Average(x => x.Ticks)) };
 

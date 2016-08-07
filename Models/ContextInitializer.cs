@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WSP_2.Models
 {
-    public class ContextInitializer : DropCreateDatabaseAlways<WebSiteContext>
+    public class ContextInitializer : CreateDatabaseIfNotExists<WebSiteContext>
     {
         protected override void Seed(WebSiteContext db)
         {
