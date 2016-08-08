@@ -11,10 +11,10 @@ namespace WSP_2.Models
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Нужно ввести адрес сайта")]
-        [StringLength(150, MinimumLength = 6, ErrorMessage = "Длина строки должна быть от 6 до 150 символов")]
-        [RegularExpression(@"https?[\w\W]+", ErrorMessage = "Некорректный адрес")]
-        [Display(Name = "Адрес сайта")]
+        [Required(ErrorMessage = "Enter the url of the website")]
+        [StringLength(150, MinimumLength = 6, ErrorMessage = "String length must be from 6 to 150 characters")]
+        [RegularExpression(@"https?[\w\W]+", ErrorMessage = "Incorrect address")]
+        [Display(Name = "Website address")]
         public string UrlAddress { get; set; }
 
         [ScaffoldColumn(false)]

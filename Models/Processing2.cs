@@ -42,7 +42,7 @@ namespace WSP_2.Models
 
             //check in the existence of the site
             if (SiteIPAddress(hostName.UrlAddress).Count == 0)
-                return new List<string>{"site does not exist"};// new List<string>() { "site does't find" };
+                return new List<string>{"site does not exist"};
             listForFlotcharts = new List<long[]>();
             wsa = new FoundWebSiteAddress { UrlAddress = hostName.UrlAddress, isExistAddress = true, GuidString=hostName.GuidString };
 
