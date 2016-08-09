@@ -12,7 +12,7 @@ namespace WSP_2.Models
         public DbSet<FoundSiteMape> FoundSiteMapes { get; set; }
         public DbSet<FoundSitePage> FoundSitePages { get; set; }
 
-        public WebSiteContext() : base("WebSiteDb2") { }
+        public WebSiteContext() : base("Connection") { }
         //static WebSiteContext()
         //{
         //    Database.SetInitializer<WebSiteContext>(new ContextInitializer());
